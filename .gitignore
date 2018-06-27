@@ -1,0 +1,28 @@
+# .gitignore
+# play
+.settings
+eclipse
+precompiled
+logs
+tmp
+.classpath
+.project
+server.pid
+
+# project
+.idea
+.DS_Store
+*.sublime-*
+.vscode
+
+# node
+npm-debug.log
+node_modules
+
+# build
+serve/*.tar
+serve/app/views/Application/index.html
+serve/build
+serve/public
+build
+*.bak
