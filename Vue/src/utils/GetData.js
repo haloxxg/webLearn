@@ -1,4 +1,4 @@
-import Tool from "./tool";
+import Tool from "./Tool";
 
 let Getdata = function (mysetting) {
     const Hello = {
@@ -49,15 +49,21 @@ let Getdata = function (mysetting) {
                     return data;
                 }
             },
+            /* 
+                1、获取数据
+                2、存储数据
+                3、修改数据
+            */
             getState() {
                 let { $route, $router, $store } = this,
                     props = { route: $route, state: $store.state[setting.id] },
                     { success, error } = setting,
                     success_fn = function (res) {
-                        let { status, data } = res;
-                        this.initState(data);
+                        let { status, data } = res,
+                            // 传入state是因为可以需要对请求回来的数据做一些操作之后进行存储
+                            state = {};
                         if (typeof data === 'function') {
-                            success(data);
+                            success(state, data, props);
                         }
                     },
                     error_fn = function (res) {
