@@ -7,8 +7,10 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const config = {
 	entry: {
-		bundle1: './src/main',
-		vender: ["vue", "vuex", "vue-router"]
+		// bundle1: './src/main',
+		bundle2: './src/react',
+		// vender: ["vue", "vuex", "vue-router"]
+		vender: ["react", "react-dom"]
 	},
 	output: {
 		path: path.join(__dirname, 'dist'),
@@ -23,13 +25,13 @@ const config = {
 		//     'NODE_ENV': JSON.stringify(env)
 		//   }
 		// }),
-		// new CommonsChunkPlugin({
-		//   name: 'bundle2',
-		// }),
-		//公共模块打包
 		new CommonsChunkPlugin({
-			name: 'vender',
+		  name: 'bundle2',
 		}),
+		//公共模块打包
+		// new CommonsChunkPlugin({
+		// 	name: 'vender',
+		// }),
 		//css单独打包
 		new ExtractTextPlugin({ 
 			filename: '[hash:8].style.css', 
@@ -54,9 +56,14 @@ const config = {
 				use: ['vue-loader'], 
 				include: path.join(__dirname,'src')},
 			//babel转换
-			{ test: /\.js$/, 
-				use: ['babel-loader'],
-				exclude: /node_modules|vue\/dist|vue-hot-reload-api|vue-router\/|vue-loader/
+			// { test: /\.js$/, 
+			// 	use: ['babel-loader'],
+			// 	exclude: /node_modules|vue\/dist|vue-hot-reload-api|vue-router\/|vue-loader/
+			// },
+			{
+				test: /\.js$/,
+                use: ['babel-loader?presets=es2015,presets=react'],
+                exclude: /^node_modules$/,
 			},
 			//css模块转换
 			{ test: /\.css$/,

@@ -2,12 +2,13 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Hello from "components/Hello"
 import Test from "components/Test2"
+import Test3 from "components/Test3"
 import Tool from '../utils/Tool';
 
 Vue.use(VueRouter)
 
 //根路由，作为一个拦截器，对所有路由页面做控制
-const IndexRoute = {
+const IndexRoute = { 
     template: "<router-view></router-view>",
     beforeCreate() {
     },
@@ -42,6 +43,7 @@ const routes = [
         path: "/", 
         component: IndexRoute, 
         children: [
+            {path: "test3",  component: Test3},
             { path: "test", component: Test},
             {path: "foo", component: Hello},
             {path: "*",  component: Hello},

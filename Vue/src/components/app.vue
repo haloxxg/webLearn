@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <router-view></router-view>
+    <div @click="test">
+        {{hello}}
     </div>
 </template>
 
@@ -11,6 +11,11 @@ export default {
         return {
             hello: "你好",
             name: "halo"
+        }
+    },
+    methods: {
+        test () {
+            console.log(11111);
         }
     },
     props: {

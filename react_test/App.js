@@ -9,36 +9,39 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  TextInput,
 } from 'react-native';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
     'Cmd+D or shake for dev menu',
   android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
+    'Shake or press menu button for devss',
 });
 
 export default class App extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
-        <Text style={styles.instructions}>
-          hello world
-        </Text>
-      </View>
-    );
-  }
-}
+	constructor(props) {
+		super(props);
+		this.handleText = this.handleText.bind(this);
+    	this.state = {text: ''};
+  	}
+  	render() {
+    	return (
+		// 尝试把`flexDirection`改为`column`看看
+			<View style={{flex: 1, flexDirection: 'column'}}>
+				<View style={{width: 50, height: 50, backgroundColor: 'powderblue'}} />
+				<View style={{width: 50, height: 50, backgroundColor: 'skyblue'}} />
+				<View style={{width: 50, height: 50, backgroundColor: 'steelblue'}} />
+				<Text>{this.state.text}</Text>
+				<TextInput onChangeText={this.handleText} />
+			</View>
+		);
+  	}
+  	handleText(text) {
+		this.setState({text})
+  	}
+};
 
 const styles = StyleSheet.create({
   container: {

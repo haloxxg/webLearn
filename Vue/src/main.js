@@ -7,7 +7,7 @@ import GetData from 'components/GetData'
 Vue.component("GetData", GetData)
 
 var app = new Vue({
-    el: '#app',
+    // el: '#app',
     router,
     store,
     components: {
@@ -15,3 +15,5 @@ var app = new Vue({
     },
     render: h => h(App)
 })
+
+app.$mount("#app", true);
