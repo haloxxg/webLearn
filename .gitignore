@@ -26,3 +26,4 @@ serve/build
 serve/public
 build
 *.bak
+dist
